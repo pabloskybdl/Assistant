@@ -73,7 +73,7 @@ def take_user_input():
                 speak('¡Que tenga un buen día señor!')
             exit()
     except Exception:
-        speak('Disculpe, no he podido entenderle. ¿Podría decirlo de nuevo?')
+        speak('Disculpe señor, no he podido entenderle. ¿Podría decirlo de nuevo?')
         query = 'None'
     return query
 # endregion
