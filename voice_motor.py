@@ -29,16 +29,13 @@ engine.setProperty('voice', voices[1].id)
 # endregion
 
 # region Conversión Texto a Voz
-def speak(text):
-    """Usado para decir cualquier texto que le sea entregado"""
-
+def speak(text): #Usado para decir cualquier texto que le sea entregado
     engine.say(text)
     engine.runAndWait()
 # endregion
 
 # region Greeting
-def greet_user():
-    """Saluda al usuario de acuerdo al horario"""
+def greet_user(): #Saluda al usuario de acuerdo al horario
 
     hour = datetime.now().hour
     if (hour >= 6) and (hour < 12):
