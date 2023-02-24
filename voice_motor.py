@@ -48,8 +48,7 @@ def greet_user(): #Saluda al usuario de acuerdo al horario
 # endregion
 
 # region Speech Recognition
-def take_user_input():
-    """Toma las entradas del usuario, las reconoce utilizando el módulo de reconocimiento de voz y lo transforma a texto"""
+def take_user_input():  #Toma las entradas del usuario, las reconoce utilizando el módulo de reconocimiento de voz y lo transforma a texto"""
 
     r = sr.Recognizer()
     with sr.Microphone() as source:
