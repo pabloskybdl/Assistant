@@ -1,9 +1,5 @@
-# In this file we are gonna configure some offline functions
-
-# region Imports
 import os
 import subprocess as sp
-# endregion
 
 paths = {
     'notepad': "C:\\Program Files\\Notepad++\\notepad++.exe",
@@ -11,14 +7,22 @@ paths = {
     'calculator': "C:\\Windows\\System32\\calc.exe"
 }
 
-#region Opening Programms (Discord & Notepadd)
+
 def open_notepad():
     os.startfile(paths['notepad'])
+
+
 def open_discord():
     os.startfile(paths['discord'])
-#endregion
 
-# region Opening cmd
+
 def open_cmd():
     os.system('start cmd')
-# endregion
+
+
+def open_camera():
+    sp.run('start microsoft.windows.camera:', shell=True)
+
+
+def open_calculator():
+    sp.Popen(paths['calculator'])
