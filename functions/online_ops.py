@@ -1,5 +1,3 @@
-# In this file we are gonna configure some online functions
-
 import requests
 import wikipedia
 import pywhatkit as kit
@@ -9,7 +7,6 @@ from decouple import config
 
 NEWS_API_KEY = config("NEWS_API_KEY")
 OPENWEATHER_APP_ID = config("OPENWEATHER_APP_ID")
-TMDB_API_KEY = config("TMDB_API_KEY")
 EMAIL = config("EMAIL")
 PASSWORD = config("PASSWORD")
 

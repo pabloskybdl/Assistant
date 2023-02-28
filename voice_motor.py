@@ -11,65 +11,64 @@ from utils import opening_text
 USERNAME = config('USER')
 BOTNAME = config('BOTNAME')
 
-# region Starting Engine
 engine = pyttsx3.init('sapi5')
-# endregion
 
-# region Set Rate
+# Set Rate
 engine.setProperty('rate', 190)
-# endregion
 
-# region Set Volume
+# Set Volume
 engine.setProperty('volume', 1.0)
-# endregion
 
-# region Set Voice (Female)
+# Set Voice (Female)
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-# endregion
 
-# region Conversión Texto a Voz
-def speak(text): #Usado para decir cualquier texto que le sea entregado
+
+# Text to Speech Conversion
+def speak(text):
+    """Used to speak whatever text is passed to it"""
+
     engine.say(text)
     engine.runAndWait()
-# endregion
 
-# region Greeting
-def greet_user(): #Saluda al usuario de acuerdo al horario
+
+# Greet the user
+def greet_user():
+    """Greets the user according to the time"""
 
     hour = datetime.now().hour
     if (hour >= 6) and (hour < 12):
-        speak(f"Buenos días {USERNAME}")
+        speak(f"Good Morning {USERNAME}")
     elif (hour >= 12) and (hour < 16):
-        speak(f"Buenas tardes {USERNAME}")
+        speak(f"Good afternoon {USERNAME}")
     elif (hour >= 16) and (hour < 19):
-        speak(f"Buenas noches {USERNAME}")
-    speak(f"Yo soy {BOTNAME}. ¿Cómo puedo asistirle?")
-# endregion
+        speak(f"Good Evening {USERNAME}")
+    speak(f"I am {BOTNAME}. How may I assist you?")
 
-# region Speech Recognition
-def take_user_input():  #Toma las entradas del usuario, las reconoce utilizando el módulo de reconocimiento de voz y lo transforma a texto"""
+
+# Takes Input from User
+def take_user_input():
+    """Takes user input, recognizes it using Speech Recognition module and converts it into text"""
 
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print('Escuchando....')
+        print('Listening....')
         r.pause_threshold = 1
         audio = r.listen(source)
 
     try:
-        print('Reconociendo...')
-        query = r.recognize_google(audio, language='es-es')
-        if not 'Salir' in query or 'Alto' in query:
+        print('Recognizing...')
+        query = r.recognize_google(audio, language='en-in')
+        if not 'exit' in query or 'stop' in query:
             speak(choice(opening_text))
         else:
             hour = datetime.now().hour
             if hour >= 21 and hour < 6:
-                speak("Buenas noches señor, !cuídese!")
+                speak("Good night sir, take care!")
             else:
-                speak('¡Que tenga un buen día señor!')
+                speak('Have a good day sir!')
             exit()
     except Exception:
-        speak('Disculpe señor, no he podido entenderle. ¿Podría decirlo de nuevo?')
+        speak('Sorry, I could not understand. Could you please say that again?')
         query = 'None'
     return query
-# endregion
