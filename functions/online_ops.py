@@ -21,6 +21,11 @@ def search_on_wikipedia(query):
     return results
 # endregion
 
+# region Plat YouTube videos
+def play_on_youtube(video):
+    kit.playonyt(video)
+# end region
+
 # region Google Search
 
 def search_on_google(query):
@@ -70,7 +75,6 @@ def get_latest_news():
 
 # region Weather
 OPENWEATHER_APP_ID = config("OPENWEATHER_APP_ID")
-
 
 def get_weather_report(city):
     res = requests.get(
